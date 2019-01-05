@@ -90,6 +90,11 @@ Topic:BTC	PartitionCount:1	ReplicationFactor:1	Configs:
 Topic:LTC	PartitionCount:1	ReplicationFactor:1	Configs:
 	Topic: LTC	Partition: 0	Leader: 1001	Replicas: 1001	Isr: 1001
 ```
+[Optional] Command to list the kafka topics registered:
+```
+docker exec -it kafka kafka-topics --zookeeper zookeeper:2181 --list
+```
+
 ## Step 5: Produce and consume data
 
 ### 1. Start consumers
@@ -97,19 +102,19 @@ The commands below will start two built-in Kafka Console Consumer containers, on
 
 **BTC Consumer (terminal 1):**
 ```
-docker run \
---net=cryptonet \
---name=consumer-btc \
-confluentinc/cp-kafka:5.1.0 \
-kafka-console-consumer --bootstrap-server kafka:9092 --topic BTC
+$ docker run \
+  --net=cryptonet \
+  --name=consumer-btc \
+  confluentinc/cp-kafka:5.1.0 \
+  kafka-console-consumer --bootstrap-server kafka:9092 --topic BTC
 ```
 **LTC Consumer (terminal 2)**
 ```
-docker run \
---net=cryptonet \
---name=consumer-ltc \
-confluentinc/cp-kafka:5.1.0 \
-kafka-console-consumer --bootstrap-server kafka:9092 --topic LTC
+$ docker run \
+  --net=cryptonet \
+  --name=consumer-ltc \
+  confluentinc/cp-kafka:5.1.0 \
+  kafka-console-consumer --bootstrap-server kafka:9092 --topic LTC
 ```
 Both consumers are now just waiting for the new messages from the broker.
 
@@ -131,7 +136,7 @@ do
   sleep 3s
 done
 ```
-## Step 6: Data consumed
+### 3: Check data consumed
 
 **BTC Consumer (terminal 1):**
 ```
@@ -148,4 +153,17 @@ done
 {"high": "34.29", "last": "34.06", "timestamp": "1546691462", "bid": "33.97", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.16", "open": "34.00"}
 {"high": "34.29", "last": "34.06", "timestamp": "1546691469", "bid": "33.96", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.13", "open": "34.00"}
 {"high": "34.29", "last": "34.06", "timestamp": "1546691478", "bid": "33.97", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.13", "open": "34.00"}
+```
+## Step 6: Cleanup
+1. Stop running containers:
+```
+$ docker stop zookeeper kafka consumer-btc consumer-ltc
+```
+2. Remove stopped containers:
+```
+$  docker rm zookeeper kafka consumer-btc consumer-ltc
+```
+3. Remove Docker network:
+```
+$ docker network rm cryptonet
 ```
