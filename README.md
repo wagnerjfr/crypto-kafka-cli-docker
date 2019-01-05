@@ -50,9 +50,9 @@ $ docker ps -a
 ```
 Something similar to this should appear:
 ```
-CONTAINER ID    IMAGE                             COMMAND                  CREATED             STATUS              PORTS                          NAMES
-96ac8d57a7e3    confluentinc/cp-kafka:5.1.0       "/etc/confluent/dock…"   13 minutes ago      Up 13 minutes       9092/tcp                       kafka
-7fda9c1a3d78    confluentinc/cp-zookeeper:5.1.0   "/etc/confluent/dock…"   19 minutes ago      Up 19 minutes       2181/tcp, 2888/tcp, 3888/tcp   zookeeper
+CONTAINER ID    IMAGE                             COMMAND                  CREATED              STATUS              PORTS                          NAMES
+7bfb0e8084df    confluentinc/cp-kafka:5.1.0       "/etc/confluent/dock…"   36 seconds ago       Up 35 seconds       9092/tcp                       kafka
+5b4857aae162    confluentinc/cp-zookeeper:5.1.0   "/etc/confluent/dock…"   About a minute ago   Up About a minute   2181/tcp, 2888/tcp, 3888/tcp   zookeeper
 ```
 
 ## Step 4: Create topics
