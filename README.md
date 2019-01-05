@@ -21,7 +21,7 @@ $ docker run -d \
 $ docker logs zookeeper
 ```
 Wait for some seconds and you should see the below message at the end of the log output:
-```
+```console
 [2019-01-05 11:33:04,754] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
 ```
 ## Step 3: Start Kakfa
@@ -35,12 +35,12 @@ $ docker run -d \
   -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \
   confluentinc/cp-kafka:5.1.0
 ```
-[Optional] Check the logs to see whether the broker has started successfully:
+*[Optional]* Check the logs to see whether the broker has started successfully:
 ```
 $ docker logs kafka
 ```
 Similiar messages should appear at the end of the log output command:
-```
+```console
 [2019-01-05 11:39:06,528] DEBUG [Controller id=1001] Topics not in preferred replica for broker 1001 Map() (kafka.controller.KafkaController)
 [2019-01-05 11:39:06,529] TRACE [Controller id=1001] Leader imbalance ratio for broker 1001 is 0.0 (kafka.controller.KafkaController)
 ```
@@ -49,7 +49,7 @@ Up to now we have two services running. To check it run:
 $ docker ps -a
 ```
 Something similar to this should appear:
-```
+```console
 CONTAINER ID    IMAGE                             COMMAND                  CREATED              STATUS              PORTS                          NAMES
 7bfb0e8084df    confluentinc/cp-kafka:5.1.0       "/etc/confluent/dock…"   36 seconds ago       Up 35 seconds       9092/tcp                       kafka
 5b4857aae162    confluentinc/cp-zookeeper:5.1.0   "/etc/confluent/dock…"   About a minute ago   Up About a minute   2181/tcp, 2888/tcp, 3888/tcp   zookeeper
@@ -68,11 +68,11 @@ do
 done
 ```
 Console output:
-```
+```console
 Created topic "BTC".
 Created topic "LTC".
 ```
-[Optional] Verify whether the topics were created successfully:
+*[Optional]* Verify whether the topics were created successfully:
 ```
 for TYPE in BTC LTC
 do
@@ -84,13 +84,13 @@ do
 done
 ```
 Console output:
-```
+```console
 Topic:BTC	PartitionCount:1	ReplicationFactor:1	Configs:
 	Topic: BTC	Partition: 0	Leader: 1001	Replicas: 1001	Isr: 1001
 Topic:LTC	PartitionCount:1	ReplicationFactor:1	Configs:
 	Topic: LTC	Partition: 0	Leader: 1001	Replicas: 1001	Isr: 1001
 ```
-[Optional] Command to list the kafka topics registered:
+*[Optional]* Command to list the kafka topics registered:
 ```
 docker exec -it kafka kafka-topics --zookeeper zookeeper:2181 --list
 ```
@@ -139,7 +139,7 @@ done
 ### 3: Check data consumed
 
 **BTC Consumer (terminal 1):**
-```
+```console
 {"high": "3848.14", "last": "3845.61", "timestamp": "1546691445", "bid": "3841.65", "vwap": "3840.95", "volume": "115.46455836", "low": "3830.72", "ask": "3846.51", "open": "3838.02"}
 {"high": "3848.14", "last": "3846.07", "timestamp": "1546691453", "bid": "3840.93", "vwap": "3840.99", "volume": "116.46455836", "low": "3830.72", "ask": "3846.05", "open": "3838.02"}
 {"high": "3848.14", "last": "3846.07", "timestamp": "1546691460", "bid": "3840.75", "vwap": "3840.99", "volume": "116.46455836", "low": "3830.72", "ask": "3845.73", "open": "3838.02"}
@@ -147,7 +147,7 @@ done
 {"high": "3848.14", "last": "3846.07", "timestamp": "1546691477", "bid": "3840.75", "vwap": "3841.01", "volume": "116.28799356", "low": "3831.41", "ask": "3846.04", "open": "3838.02"}
 ```
 **LTC Consumer (terminal 2)**
-```
+```console
 {"high": "34.29", "last": "34.06", "timestamp": "1546691447", "bid": "33.98", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.13", "open": "34.00"}
 {"high": "34.29", "last": "34.06", "timestamp": "1546691454", "bid": "33.97", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.10", "open": "34.00"}
 {"high": "34.29", "last": "34.06", "timestamp": "1546691462", "bid": "33.97", "vwap": "33.90", "volume": "4965.13128531", "low": "33.21", "ask": "34.16", "open": "34.00"}
