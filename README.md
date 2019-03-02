@@ -1,6 +1,6 @@
 # crypto-kafka-cli-docker
 
-Simple example to grab Bitcoin and Litecoin JSON data from Bitstamp API, publish them in different topics and read the values in different consumers. Basic steps for deploying Kafka along with Confluent Platform components in a Docker environment are also provided.
+Simple example to take Bitcoin and Litecoin JSON data from Bitstamp API, publish them in different topics and read the values in different consumers. Basic steps for deploying Kafka along with Confluent Platform components in a Docker environment are also provided.
 
 ## Step 1: Create a Docker Network
 Docker network is used to run the Confluent containers and is required to enable DNS resolution across your containers.
