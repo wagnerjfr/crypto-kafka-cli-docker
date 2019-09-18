@@ -16,7 +16,7 @@ $ docker run -d \
   -e ZOOKEEPER_CLIENT_PORT=2181 \
   confluentinc/cp-zookeeper:5.1.0
 ```
-[Optional] Check the Docker container log to confirm that it has booted up successfully:
+*[Optional]* Check the Docker container log to confirm that it has booted up successfully:
 ```
 $ docker logs zookeeper
 ```
