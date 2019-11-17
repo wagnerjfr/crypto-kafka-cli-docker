@@ -98,7 +98,7 @@ docker exec -it kafka kafka-topics --zookeeper zookeeper:2181 --list
 ## Step 5: Produce and consume data
 
 ### 1. Start consumers
-The commands below will start two built-in Kafka Console Consumer containers, one assigned to consume data from the BTC topic and the other one from the LTC topic. Run the commands below in different terminals so we can see the data being consumed.
+The commands below will start two *built-in* Kafka Console Consumer containers, one assigned to consume data from the BTC topic and the other one from the LTC topic. Run the commands below in different terminals so we can see the data being consumed.
 
 **BTC Consumer (terminal 1):**
 ```
