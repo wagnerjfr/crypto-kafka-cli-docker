@@ -1,4 +1,4 @@
-# crypto-kafka-cli-docker
+# `crypto-kafka-cli-docker`
 
 Simple example to take Bitcoin and Litecoin JSON data from [Bitstamp API](https://www.bitstamp.net/api/), publish them in different topics and read the values in different consumers. Basic steps for deploying Kafka along with Confluent Platform components in a Docker environment are also provided.
 
@@ -108,7 +108,7 @@ $ docker run \
   confluentinc/cp-kafka:5.1.0 \
   kafka-console-consumer --bootstrap-server kafka:9092 --topic BTC
 ```
-**LTC Consumer (terminal 2)**
+**LTC Consumer (terminal 2):**
 ```
 $ docker run \
   --net=cryptonet \
