@@ -136,7 +136,7 @@ do
   sleep 3s
 done
 ```
-### 3: Check data consumed
+### 3. Check data consumed
 
 **BTC Consumer (terminal 1):**
 ```console
